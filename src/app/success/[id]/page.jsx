@@ -1,16 +1,18 @@
 "use server";
 import { orderedMail } from "@/actions/order";
+import SuccessClient from "./SuccessClient"; // Adjust the import path accordingly
 
 const Success = async ({ params }) => {
   const updateEmail = await orderedMail(params.id);
+
   return (
     <div className="grid items-center justify-center h-[90vh]">
       {updateEmail && (
         <div className="flex justify-center items-center gap-10 flex-col">
           <img src="/success.png" className="w-40 h-40" />
-          <h1 className="text-4xl text-green-500">Successfull payment</h1>
-        </div>
-        
+          <h1 className="text-4xl text-green-500">Successful payment</h1>
+          <SuccessClient /> {/* Render the client component here */}
+        </div> 
       )}
     </div>
   );

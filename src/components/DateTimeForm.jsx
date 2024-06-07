@@ -1,6 +1,4 @@
 "use client";
-import React from "react";
-import { format } from "date-fns";
 import {
   FormControl,
   FormField,
@@ -12,10 +10,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Label } from "./ui/label";
-import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { Button } from "./ui/button";
 import { Calendar } from "./ui/calendar";
+import { Label } from "./ui/label";
+
 const DateTimeForm = ({ control, id, label }) => {
   return (
     <div>
@@ -27,7 +27,7 @@ const DateTimeForm = ({ control, id, label }) => {
         name={id}
         render={({ field }) => (
           <FormItem className="flex flex-col py-3">
-            <FormLabel>Date of birth</FormLabel>
+            <FormLabel>Rent Date</FormLabel>
             <Popover>
               <PopoverTrigger asChild>
                 <FormControl>
@@ -52,7 +52,7 @@ const DateTimeForm = ({ control, id, label }) => {
                   selected={field.value}
                   onSelect={field.onChange}
                   disabled={(date) =>
-                    date > new Date() || date < new Date("1900-01-01")
+                    date < new Date("1900-01-01")
                   }
                   initialFocus
                 />
